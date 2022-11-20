@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © GhostUnicorns. All rights reserved.
+  ~ See LICENSE and/or COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Command start -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="crt_collect_enqueue"
+                      xsi:type="object">GhostUnicorns\CrtAmqpCommand\Console\Command\EnqueueCommand</item>
+                <item name="crt_collect_dequeue"
+                      xsi:type="object">GhostUnicorns\CrtAmqpCommand\Console\Command\CollectorDequeueCommand</item>
+                <item name="crt_amqp_refiner_dequeue"
+                      xsi:type="object">GhostUnicorns\CrtAmqpCommand\Console\Command\RefinerDequeueCommand</item>
+                <item name="crt_transfer_dequeue"
+                      xsi:type="object">GhostUnicorns\CrtAmqpCommand\Console\Command\TransferorDequeueCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="GhostUnicorns\CrtAmqpCommand\Console\Command\EnqueueCommand">
+        <arguments>
+            <argument name="name" xsi:type="string">crt:run:enqueue</argument>
+        </arguments>
+    </type>
+    <type name="GhostUnicorns\CrtAmqpCommand\Console\Command\CollectorDequeueCommand">
+        <arguments>
+            <argument name="name" xsi:type="string">crt:collect:dequeue</argument>
+        </arguments>
+    </type>
+    <type name="GhostUnicorns\CrtAmqpCommand\Console\Command\RefinerDequeueCommand">
+        <arguments>
+            <argument name="name" xsi:type="string">crt:refiner:dequeue</argument>
+        </arguments>
+    </type>
+    <type name="GhostUnicorns\CrtAmqpCommand\Console\Command\TransferorDequeueCommand">
+        <arguments>
+            <argument name="name" xsi:type="string">crt:transfer:dequeue</argument>
+        </arguments>
+    </type>
+    <!-- Command end -->
+</config>
